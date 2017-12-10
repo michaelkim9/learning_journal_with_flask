@@ -10,12 +10,12 @@ class Entry(Model):
     title = CharField(max_length=100)
     date = DateTimeField(default=datetime.datetime.now)
     spent = CharField(max_length=100)
-    learned = TextField
-    resources = TextField
+    learned = TextField()
+    resources = TextField()
 
     class Meta:
         database = DATABASE
-        order_by = ('-date')
+        order_by = ('-date',)
 
     # Generate new journal entry
     @classmethod
@@ -35,6 +35,6 @@ class Entry(Model):
 
 def initialize():
     '''Initializing the database'''
-    DATABASE.connect()
+    DATABASE.get_conn()
     DATABASE.create_tables([Entry], safe=True)
     DATABASE.close()

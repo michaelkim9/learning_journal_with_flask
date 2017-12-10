@@ -1,0 +1,4 @@
+Flask_WTF==0.14.2
+WTForms==2.1
+peewee==2.10.2
+Flask==0.12.2

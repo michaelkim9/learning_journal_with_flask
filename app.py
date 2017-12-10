@@ -33,7 +33,7 @@ def after_request(response):
 def add_entry():
     '''Adding new entry'''
     form = forms.EntryForm()
-    if form.validone_on_submit():
+    if form.validate_on_submit():
         models.Entry.create(
             title=form.title.data,
             date=form.date.data,
@@ -69,7 +69,7 @@ def edit_entry(entry_id):
                 form.populate_obj(entry)
                 entry.save()
                 flash('Entry updated!', 'success')
-                return redirect(url_for('detail'), entry_id=entry.id)
+                return redirect(url_for('detail', entry_id=entry.id))
     return render_template('edit.html', form=form, entry=entry)
 
 
